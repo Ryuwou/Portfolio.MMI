@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu Web/Code - Projet 5</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* Ajustement spécifique pour cette page uniquement */
+    .project-card {
+      margin: 100px auto 40px auto; /* Moins d'espace en bas pour coller aux cartes */
+    }
+
+    /* Le container qui contient les 4 cartes */
+    .affiche-container-projet3 {
+      display: flex;
+      flex-wrap: wrap;       /* Permet de passer à la ligne proprement */
+      justify-content: center; /* Centre les cartes */
+      gap: 30px;             /* Espace égal entre toutes les cartes */
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+    }
+
+    /* Style unique pour les cartes de cette page */
+    .affiche-container-projet3 .affiche-card {
+      flex: 0 1 350px;       /* Taille stable pour en mettre 2 par ligne */
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+      position: relative;
+      margin: 0;             /* Supprime les marges qui décalent */
+      display: block;        /* Force l'alignement vertical */
+    }
+
+    .affiche-container-projet3 .affiche-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .affiche-container-projet3 .affiche-card img {
+      width: 100%;
+      height: 200px;         /* Hauteur fixe pour que tout soit aligné */
+      object-fit: cover;     /* Recadre proprement les images */
+      border-radius: 10px;
+    }
+
+    .affiche-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #555, #999);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .affiche-btn:hover {
+      background: linear-gradient(135deg, #999, #555);
+    }
+
+    .affiche-details {
+      margin-top: 15px;
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .affiche-details.show {
+      display: block;
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+      .affiche-container-projet3 .affiche-card {
+        flex: 0 1 90%;
+      }
+      .project-card {
+        margin: 80px auto 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="project-return">Retour</a>
+
+  <div class="project-card">
+    <h3>Jeu Web/Code</h3>
+    <p>
+L'objectif était de créer un jeu narratif en 2D développé avec JavaScript, incluant une contrainte d'évolution visuelle. Le joueur doit récupérer des gourdes pour progresser. À chaque objet ramassé, l'environnement s'assombrit, modifiant l'expérience sensorielle. Le défi final est de s'échapper de cet univers oppressant
+    </p>
+  </div>
+
+  <div class="affiche-container-projet3">
+    
+    <div class="affiche-card">
+      <img src="../img/Maison_01.jpg" alt="Environnement du jeu">
+      <button class="affiche-btn" onclick="toggleDetails(this)">Plus</button>
+      <div class="affiche-details">
+        <p>Aperçu de l'environnement de départ. Le level design a été conçu pour guider le joueur naturellement vers les objectifs</p>
+      </div>
+    </div>
+    
+    <div class="affiche-card">
+      <img src="../img/Elements_01.png" alt="Items et textures">
+      <button class="affiche-btn" onclick="toggleDetails(this)">Plus</button>
+      <div class="affiche-details">
+        <p>Création des assets 2D, gourdes, items et textures personnalisées pour correspondre à l'identité visuelle du projet</p>
+      </div>
+    </div>
+
+    <div class="affiche-card">
+      <img src="../img/Maison_02.jpg" alt="Ambiance sombre">
+      <button class="affiche-btn" onclick="toggleDetails(this)">Plus</button>
+      <div class="affiche-details">
+        <p>Rendu final de l'atmosphère après collecte. Le travail sur les filtres et la lumière accentue le sentiment d'urgence</p>
+      </div>
+    </div>
+
+<div class="affiche-card">
+      <img src="../img/Gameplay_01.png" alt="Démo du jeu">
+      <button class="affiche-btn" onclick="toggleDetails(this)">Voir le Gameplay</button>
+      
+      <div class="affiche-details">
+        <p><strong></strong> Découvrez les mécaniques de jeu et l'évolution de l'ambiance en vidéo</p>
+        
+        <video width="100%" height="auto" controls style="border-radius: 8px; margin-top: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+          <source src="../img/JeuCode_01.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture de vidéos HTML5
+        </video>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleDetails(button) {
+      const details = button.nextElementSibling;
+      
+      // Ferme les autres détails ouverts pour rester propre
+      const allDetails = document.querySelectorAll('.affiche-details');
+      allDetails.forEach(detail => {
+        if (detail !== details) {
+          detail.classList.remove('show');
+        }
+      });
+
+      // Alterne l'affichage de la carte cliquée
+      details.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
